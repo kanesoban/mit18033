@@ -1,0 +1,33 @@
+% Check independece using the nullspace
+
+A = [2, 1, 9; 3, 2, 11; -1, -3, 8; 4, 6, -4];
+
+% If independent, only zero vector is contained in the nullspace
+
+null(A)
+
+
+% Check if a vector is if vectors are a basis of R^3
+
+
+
+A = [1, 2; 1, 2; 2, 5]
+
+B = [A, [1; 0; 0]]
+
+% Check if they are linearly independent. Should be zero vector
+
+null(B)
+
+% Check if spans R^3
+
+B\[1; 0; 0]
+B\[0;1;0]
+B\[0;0;1]
+
+
+% Finding a solution to homogeneous linear equation systems
+% Use null(A) to find the nullspace
+% For inhomogeneous system use A\b
+
+

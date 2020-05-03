@@ -1,0 +1,31 @@
+% Solving nxn system of linear differential equations
+
+
+A = [2, 0, 0;-6, 8, 3; 18, -18, -7]
+
+
+% Step1: get eigenvalues
+[V, D] = eig(A)
+
+
+% Step2: for the first eigenvalue, find a basis for NS (L - A)
+B1 = diag(-1 * ones(3, 1)) - A
+
+
+rref([B1, [0; 0; 0]])
+
+
+% From this we can see that [0; -1/3; 1] is a basis
+
+
+
+% Step3: find a basis for all other eigenvalues (only 2)
+
+B2 = diag(2 * ones(3, 1)) - A
+
+
+
+% Step4: a solution ("normal mode") is of the form dx/dt = e^L * v, where v is a solution
+
+
+% Step4: the general solution is the linear combination of all solutions.

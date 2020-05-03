@@ -1,0 +1,39 @@
+% Input the 3x3 matrix describing your linear system as a variable A
+A = [-2, 1, 1; 1 -2, 1; 1, 1 -2];
+% Input your initial conditions as a column vector x0
+x0 =[0; 1; 0];
+% Use eig(A) to find the eigenvalues and eigenvectors of A 
+% Define the eigenvectors as column vectors v1, v2 and v3,
+% and the eigenvalues as lambda1, lambda2, lambda3
+% so that A*v1 = lambda1*v1, etc.
+[V,D] = eig(A);
+v1 = V(:, 1);
+v2 = V(:, 2);
+v3 = V(:, 3);
+lambda1 = D(1, 1);
+lambda2 = D(2, 2);
+lambda3 = D(3, 3);
+% Calculate the column vector c = [c1;c2;c3] from the initial conditions using inv(V)
+c = inv(V) * x0;
+c1 = c(1,1);
+c2 = c(2,1);
+c3 = c(3,1);
+%%% Define a row vector t with 100 equally spaced entries, 
+%%% beginning with 0 and ending at 4.
+t = linspace(0, 4, 100);
+%%% Define three row vectors h1, h2 and h3, with entries corresponding 
+%%% to h1(t), h2(t) and h3(t) evaluated at each time in t.
+h = c1 * v1 * exp(lambda1 * t) + c2 * v2 * exp(lambda2 * t) + c3 * v3 * exp(lambda3 * t);
+h1 = h(1, :);
+h2 = h(2, :);
+h3 = h(3, :);
+%%% Now use plot to plot the three vectors against time on the same figure
+plot(t,h1) %tell MATLAB to plot h1 here
+hold on
+plot(t,h2) %tell MATLAB to plot h1 here
+plot(t,h3) %tell MATLAB to plot h1 here
+set(gca,'fontsize',18)
+xlabel('Time')
+ylabel('Volume')
+title('Time series')
+
